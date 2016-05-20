@@ -212,7 +212,7 @@ public class ShapeBlock extends BaseBlock<ShapeTE> {
 	}
 	
 	public static float acBlockStrength(IBlockState state, EntityPlayer player, World world, BlockPos pos) {
-		float hardness = getBlockHardness(state.getBlock(), world, pos);
+		float hardness = BaseBlockUtils.getBlockHardness(state.getBlock(), world, pos);
 		if (hardness < 0.0F)
 			return 0.0F;
 		float strength = getPlayerBreakSpeed(player, state, pos) / hardness;
