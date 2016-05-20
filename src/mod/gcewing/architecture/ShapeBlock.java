@@ -177,7 +177,7 @@ public class ShapeBlock extends BaseBlock<ShapeTE> {
 			//System.out.printf("ShapeBlock.harvestBlock: spawning %s\n", stack);
 			spawnAsEntity(world, pos, stack);
 			if (ste.secondaryBlockState != null) {
-				stack = blockStackWithState(ste.secondaryBlockState, 1);
+				stack = ArchitectureCraft.itemCladding.newStack(ste.secondaryBlockState, 1);
 				//System.out.printf("ShapeBlock.harvestBlock: spawning %s\n", stack);
 				spawnAsEntity(world, pos, stack);
 			}
