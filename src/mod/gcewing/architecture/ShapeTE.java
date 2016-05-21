@@ -199,6 +199,7 @@ public class ShapeTE extends BaseTileEntity {
 				if (!Utils.playerIsInCreativeMode(player))
 					--stack.stackSize;
 			}
+			getWorld().checkLight(getPos());
 			return true;
 		}
 		else
