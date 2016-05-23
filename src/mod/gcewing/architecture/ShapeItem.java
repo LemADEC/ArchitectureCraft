@@ -50,8 +50,11 @@ public class ShapeItem extends ItemBlock {
 				IBlockState nstate = world.getBlockState(npos);
 				TileEntity nte = world.getTileEntity(npos);
 				te.shape.orientOnPlacement(player, te, npos, nstate, nte, face, hit);
+				nstate.getBlock().onBlockPlacedBy(world, npos, nstate, player, stack);
 			}
 		}
+
+		world.checkLight(pos);
 		return true;
 	}
 	

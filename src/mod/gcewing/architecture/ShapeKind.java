@@ -118,6 +118,7 @@ public abstract class ShapeKind {
 					Block.spawnAsEntity(te.getWorld(), te.getPos(), stack);
 				te.setSecondaryMaterial(null);
 			}
+			te.getWorld().checkLight(te.getPos());
 		}
 	}
 	
