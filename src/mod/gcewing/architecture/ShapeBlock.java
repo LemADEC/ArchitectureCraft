@@ -163,11 +163,39 @@ public class ShapeBlock extends BaseBlock<ShapeTE> {
 	}
 
 	@Override
+	public int getLightValue(IBlockAccess world, int x, int y, int z) {
+		int lightValue = getLightValue();
+		ShapeTE te = (ShapeTE)world.getTileEntity(x, y, z);
+		if (te != null) {
+			lightValue = Math.max(lightValue, te.baseBlockState.getBlock().getLightValue());
+			if (te.secondaryBlockState != null) {
+				Block secondaryBlock = te.secondaryBlockState.getBlock();
+				lightValue = Math.max(lightValue, secondaryBlock.getLightValue());
+			}
+			return lightValue;
+		}
+		return lightValue;
+	}
+
+	@Override
+	public int getLightOpacity(IBlockAccess world, int x, int y, int z) {
+		int opacity = getLightOpacity();
+		ShapeTE te = (ShapeTE)world.getTileEntity(x, y, z);
+		if (te != null) {
+			opacity = Math.min(opacity, te.baseBlockState.getBlock().getLightOpacity());
+			if (te.secondaryBlockState != null) {
+				opacity = Math.max(opacity, te.secondaryBlockState.getBlock().getLightOpacity());
+			}
+		}
+		return opacity;
+	}
+
+	@Override
 	public boolean canHarvestBlock(IBlockState state, EntityPlayer player) {
 		//System.out.printf("ShapeBlock.canHarvestBlock: by %s\n", player);
 		return true;
 	}
-	
+
 	@Override
 	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te) {
 		//System.out.printf("ShapeBlock.harvestBlock: by %s\n", player);
