@@ -199,7 +199,7 @@ public class ShapeTE extends BaseTileEntity {
 				if (!Utils.playerIsInCreativeMode(player))
 					--stack.stackSize;
 			}
-			getWorld().checkLight(getPos());
+			BaseBlockUtils.getTileEntityWorld(this).updateLightByType(EnumSkyBlock.Block, getX(), getY(), getZ());
 			return true;
 		}
 		else

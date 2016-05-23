@@ -53,6 +53,8 @@ public class ShapeItem extends BaseItemBlock {
 				te.shape.orientOnPlacement(player, te, npos, nstate, nte, face, hit);
 			}
 		}
+
+		world.updateLightByType(EnumSkyBlock.Block, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 	

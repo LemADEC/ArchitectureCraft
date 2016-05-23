@@ -122,6 +122,7 @@ public abstract class ShapeKind {
 				}
 				te.setSecondaryMaterial(null);
 			}
+			BaseBlockUtils.getTileEntityWorld(te).updateLightByType(EnumSkyBlock.Block, te.getX(), te.getY(), te.getZ());
 		}
 	}
 	
